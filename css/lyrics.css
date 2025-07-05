@@ -46,6 +46,7 @@
 
 .song-meta {
     margin-top: 20px;
+    text-align: center;
 }
 
 .song-title {
@@ -174,7 +175,54 @@
     font-weight: 500;
 }
 
-/* Thank You Section */
+/* Vinyl Record Section */
+.vinyl-section {
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.vinyl-container {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: center;
+    color: white;
+}
+
+.vinyl-image {
+    text-align: center;
+}
+
+.vinyl-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.vinyl-img:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.vinyl-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ecf0f1;
+}
+
+.vinyl-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #bdc3c7;
+}
 .thank-you {
     margin-top: 30px;
     padding: 20px;
@@ -219,6 +267,22 @@
     
     .verse-text, .chorus-text, .ending-text {
         font-size: 1rem;
+    }
+    
+    .lyrics-header-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        text-align: center;
+    }
+    
+    .vinyl-container {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+        text-align: center;
+    }
+    
+    .vinyl-text h3 {
+        font-size: 1.5rem;
     }
 }
 
