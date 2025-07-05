@@ -95,7 +95,7 @@ body {
 
 .cover-image {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -169,10 +169,10 @@ body {
 }
 
 .audio-players {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 800px;
 }
 
 .audio-player {
@@ -252,6 +252,11 @@ body {
     
     .description p {
         text-align: left;
+    }
+    
+    .audio-players {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
 
