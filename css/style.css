@@ -95,10 +95,14 @@ body {
 
 .cover-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: auto;
 }
 
 .hero-text {
