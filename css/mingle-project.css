@@ -59,8 +59,8 @@
 .hero-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
+    gap: 40px;
+    align-items: flex-start;
     margin-bottom: 40px;
 }
 
@@ -68,11 +68,15 @@
     text-align: left;
 }
 
+.hero-right {
+    text-align: right;
+}
+
 .hero-title {
     font-family: 'Playfair Display', serif;
     font-size: 4.5rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 1s ease-out;
     text-align: left;
@@ -81,7 +85,7 @@
 .hero-subtitle {
     font-size: 1.5rem;
     font-weight: 400;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     color: #ffffff;
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
     background: rgba(0, 0, 0, 0.3);
@@ -90,6 +94,7 @@
     backdrop-filter: blur(10px);
     animation: fadeInUp 1s ease-out 0.3s both;
     display: inline-block;
+    text-align: center;
 }
 
 .hero-description {
