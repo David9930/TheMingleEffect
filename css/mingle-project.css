@@ -58,10 +58,13 @@
 
 .hero-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: flex-start;
+    grid-template-columns: 1.2fr 1.5fr;
+    gap: 60px;
+    align-items: center;
     margin-bottom: 60px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-left {
@@ -75,32 +78,33 @@
 
 .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 1s ease-out;
     text-align: left;
+    line-height: 1.1;
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 400;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     color: #ffffff;
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
     background: rgba(0, 0, 0, 0.3);
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 8px 16px;
+    border-radius: 20px;
     backdrop-filter: blur(10px);
     animation: fadeInUp 1s ease-out 0.3s both;
     display: inline-block;
 }
 
 .hero-description {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
     animation: fadeInUp 1s ease-out 0.6s both;
     text-align: left;
     color: rgba(255, 255, 255, 0.95);
@@ -108,20 +112,21 @@
 
 .hero-buttons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     animation: fadeInUp 1s ease-out 0.9s both;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .btn-primary, .btn-secondary {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
-    min-width: 180px;
+    min-width: 160px;
     text-align: center;
 }
 
@@ -162,29 +167,30 @@
 }
 
 .mingle-video {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     animation: fadeInUp 1s ease-out 1.2s both;
 }
 
 .mingle-video h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 20px;
     color: #ffffff;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 
 .video-container {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 650px;
     margin: 0 auto 20px;
-    padding-bottom: 28.125%; /* 16:9 aspect ratio for smaller video */
+    padding-bottom: 36.5625%; /* 16:9 aspect ratio for proper viewing */
     height: 0;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .video-container iframe {
@@ -1005,14 +1011,10 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 3rem;
-    }
-    
+@media (max-width: 1024px) {
     .hero-layout {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 40px;
         text-align: center;
     }
     
@@ -1022,14 +1024,31 @@
     
     .hero-title {
         text-align: center;
+        font-size: 3rem;
     }
     
     .hero-description {
         text-align: center;
     }
     
+    .video-container {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .video-container {
+        max-width: 100%;
+        padding-bottom: 56.25%;
+    }
+    
     .hero-buttons {
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
     
     .section-title {
@@ -1044,11 +1063,6 @@
     .michael-content {
         grid-template-columns: 1fr;
         text-align: center;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
     }
     
     .final-buttons {
