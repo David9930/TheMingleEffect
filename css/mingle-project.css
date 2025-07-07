@@ -35,49 +35,16 @@
     color: white;
 }
 
-.floating-icons .icon:nth-child(1) {
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.floating-icons .icon:nth-child(2) {
-    top: 60%;
-    left: 80%;
-    animation-delay: 1s;
-}
-
-.floating-icons .icon:nth-child(3) {
-    top: 30%;
-    left: 70%;
-    animation-delay: 2s;
-}
-
-.floating-icons .icon:nth-child(4) {
-    top: 80%;
-    left: 20%;
-    animation-delay: 3s;
-}
-
-.floating-icons .icon:nth-child(5) {
-    top: 10%;
-    left: 50%;
-    animation-delay: 4s;
-}
-
-.floating-icons .icon:nth-child(6) {
-    top: 70%;
-    left: 40%;
-    animation-delay: 5s;
-}
+.floating-icons .icon:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.floating-icons .icon:nth-child(2) { top: 60%; left: 80%; animation-delay: 1s; }
+.floating-icons .icon:nth-child(3) { top: 30%; left: 70%; animation-delay: 2s; }
+.floating-icons .icon:nth-child(4) { top: 80%; left: 20%; animation-delay: 3s; }
+.floating-icons .icon:nth-child(5) { top: 10%; left: 50%; animation-delay: 4s; }
+.floating-icons .icon:nth-child(6) { top: 70%; left: 40%; animation-delay: 5s; }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-20px) rotate(10deg);
-    }
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
 }
 
 .hero-content {
@@ -149,7 +116,7 @@
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     margin-bottom: 15px;
 }
 
@@ -227,26 +194,14 @@
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Crisis Statistics Section */
@@ -478,29 +433,10 @@
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-.person-1 {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.person-2 {
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.person-3 {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.person-4 {
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
+.person-1 { top: 0; left: 50%; transform: translateX(-50%); }
+.person-2 { right: 0; top: 50%; transform: translateY(-50%); }
+.person-3 { bottom: 0; left: 50%; transform: translateX(-50%); }
+.person-4 { left: 0; top: 50%; transform: translateY(-50%); }
 
 .connection-lines {
     position: absolute;
@@ -517,47 +453,12 @@
     transform-origin: left center;
 }
 
-.line-1 {
-    top: 30px;
-    left: 50%;
-    width: 106px;
-    transform: translateX(-50%) rotate(45deg);
-}
-
-.line-2 {
-    top: 30px;
-    left: 50%;
-    width: 106px;
-    transform: translateX(-50%) rotate(-45deg);
-}
-
-.line-3 {
-    bottom: 30px;
-    left: 50%;
-    width: 106px;
-    transform: translateX(-50%) rotate(-45deg);
-}
-
-.line-4 {
-    bottom: 30px;
-    left: 50%;
-    width: 106px;
-    transform: translateX(-50%) rotate(45deg);
-}
-
-.line-5 {
-    top: 50%;
-    left: 30px;
-    width: 240px;
-    transform: translateY(-50%);
-}
-
-.line-6 {
-    top: 30px;
-    left: 50%;
-    width: 240px;
-    transform: translateX(-50%) rotate(90deg);
-}
+.line-1 { top: 30px; left: 50%; width: 106px; transform: translateX(-50%) rotate(45deg); }
+.line-2 { top: 30px; left: 50%; width: 106px; transform: translateX(-50%) rotate(-45deg); }
+.line-3 { bottom: 30px; left: 50%; width: 106px; transform: translateX(-50%) rotate(-45deg); }
+.line-4 { bottom: 30px; left: 50%; width: 106px; transform: translateX(-50%) rotate(45deg); }
+.line-5 { top: 50%; left: 30px; width: 240px; transform: translateY(-50%); }
+.line-6 { top: 30px; left: 50%; width: 240px; transform: translateX(-50%) rotate(90deg); }
 
 .center-logo {
     position: absolute;
@@ -1157,7 +1058,7 @@
     }
     
     .video-container {
-        padding-bottom: 60%; /* Adjust for mobile */
+        padding-bottom: 60%;
     }
 }
 
