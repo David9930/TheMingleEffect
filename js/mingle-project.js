@@ -22,6 +22,9 @@ function initMingleProject() {
     
     // Scroll-triggered animations
     setupScrollAnimations();
+    
+    // City cards interactive effect
+    setupCityCardsEffect();
 }
 
 // Animated Statistics Counter
@@ -31,7 +34,7 @@ function setupStatsAnimation() {
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const target = parseInt(entry.target.getAttribute('data-target'));
+                const target = parseFloat(entry.target.getAttribute('data-target'));
                 animateCounter(entry.target, 0, target, 2000);
                 statsObserver.unobserve(entry.target);
             }
@@ -66,6 +69,7 @@ function animateCounter(element, start, end, duration) {
             
             // Add completion animation
             element.style.transform = 'scale(1.2)';
+            element.style.transition = 'transform 0.2s ease';
             setTimeout(() => {
                 element.style.transform = 'scale(1)';
             }, 200);
@@ -80,9 +84,11 @@ function setupSmoothScrolling() {
     if (scrollIndicator) {
         scrollIndicator.addEventListener('click', () => {
             const crisisSection = document.querySelector('.crisis-section');
-            crisisSection.scrollIntoView({
-                behavior: 'smooth'
-            });
+            if (crisisSection) {
+                crisisSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     }
     
@@ -92,9 +98,11 @@ function setupSmoothScrolling() {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             const targetSection = document.querySelector('#take-action');
-            targetSection.scrollIntoView({
-                behavior: 'smooth'
-            });
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 }
@@ -105,11 +113,12 @@ function setupInteractiveElements() {
     const statCards = document.querySelectorAll('.stat-card');
     statCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-15px) scale(1.02)';
+            card.style.transform = 'translateY(-8px)';
+            card.style.transition = 'all 0.3s ease';
         });
         
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
+            card.style.transform = 'translateY(0)';
         });
     });
     
@@ -118,12 +127,17 @@ function setupInteractiveElements() {
     featureCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             const icon = card.querySelector('.feature-icon');
-            icon.style.transform = 'scale(1.2) rotate(10deg)';
+            if (icon) {
+                icon.style.transform = 'scale(1.2) rotate(10deg)';
+                icon.style.transition = 'all 0.3s ease';
+            }
         });
         
         card.addEventListener('mouseleave', () => {
             const icon = card.querySelector('.feature-icon');
-            icon.style.transform = 'scale(1) rotate(0deg)';
+            if (icon) {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            }
         });
     });
     
@@ -132,12 +146,16 @@ function setupInteractiveElements() {
     actionCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             const icon = card.querySelector('.action-icon');
-            icon.style.animation = 'pulse 1s ease-in-out infinite';
+            if (icon) {
+                icon.style.animation = 'pulse 1s ease-in-out infinite';
+            }
         });
         
         card.addEventListener('mouseleave', () => {
             const icon = card.querySelector('.action-icon');
-            icon.style.animation = 'none';
+            if (icon) {
+                icon.style.animation = 'none';
+            }
         });
     });
     
@@ -145,11 +163,12 @@ function setupInteractiveElements() {
     const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
     buttons.forEach(button => {
         button.addEventListener('mouseenter', () => {
-            button.style.transform = 'translateY(-3px) scale(1.05)';
+            button.style.transform = 'translateY(-3px)';
+            button.style.transition = 'all 0.3s ease';
         });
         
         button.addEventListener('mouseleave', () => {
-            button.style.transform = 'translateY(0) scale(1)';
+            button.style.transform = 'translateY(0)';
         });
     });
 }
@@ -161,7 +180,7 @@ function setupParallaxEffects() {
     
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
+        const rate = scrolled * -0.2;
         
         if (heroBackground) {
             heroBackground.style.transform = `translateY(${rate}px)`;
@@ -169,9 +188,10 @@ function setupParallaxEffects() {
         
         // Individual icon movement
         floatingIcons.forEach((icon, index) => {
-            const speed = 0.2 + (index * 0.1);
+            const speed = 0.1 + (index * 0.05);
             const yPos = scrolled * speed;
-            icon.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.1}deg)`;
+            const rotation = scrolled * 0.02;
+            icon.style.transform = `translateY(${yPos}px) rotate(${rotation}deg)`;
         });
     });
 }
@@ -215,11 +235,12 @@ function animateConnections() {
     // Animate connection lines
     lines.forEach((line, index) => {
         setTimeout(() => {
+            const originalWidth = line.style.width || '106px';
             line.style.width = '0';
             line.style.transition = 'width 0.8s ease-out';
             
             setTimeout(() => {
-                line.style.width = line.style.width || '60px';
+                line.style.width = originalWidth;
             }, 100);
         }, 1000 + (index * 150));
     });
@@ -283,7 +304,7 @@ function setupCityCardsEffect() {
         });
     });
     
-    // Add ripple animation CSS
+    // Add ripple animation CSS if not exists
     if (!document.querySelector('#ripple-styles')) {
         const style = document.createElement('style');
         style.id = 'ripple-styles';
@@ -294,13 +315,14 @@ function setupCityCardsEffect() {
                     opacity: 0;
                 }
             }
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+            }
         `;
         document.head.appendChild(style);
     }
 }
-
-// Initialize city cards effect
-setupCityCardsEffect();
 
 // Advanced scroll effects with throttling
 let ticking = false;
@@ -314,20 +336,12 @@ function updateScrollEffects() {
         header.style.background = 'rgba(255, 255, 255, 0.95)';
         header.style.backdropFilter = 'blur(10px)';
         header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        header.style.transition = 'all 0.3s ease';
     } else if (header) {
         header.style.background = 'rgba(255, 255, 255, 1)';
         header.style.backdropFilter = 'none';
         header.style.boxShadow = 'none';
     }
-    
-    // Floating elements parallax
-    const floatingElements = document.querySelectorAll('.floating-icons .icon');
-    floatingElements.forEach((element, index) => {
-        const speed = 0.1 + (index * 0.05);
-        const yPos = scrolled * speed;
-        const rotation = scrolled * 0.05;
-        element.style.transform = `translateY(${yPos}px) rotate(${rotation}deg)`;
-    });
     
     ticking = false;
 }
