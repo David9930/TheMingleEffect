@@ -1,7 +1,7 @@
 // Contact Page JavaScript with Google Sheets Integration
 
 // Configuration - Using the same Google Apps Script URL as your Rebecca site
-const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxg6MQxty1bBTgsx7n1O_Z4X1kO0Bd3AH086Xrvmnfytho3TO2kCY5GJaY3QISZ6E08cg/exec';
+const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwq0kM1yM7VzdgVIZ4gVZLcYnxIEEVi3z-wxzOOy5gN33IxGUJecB4y3y3jJ1S8VBFJow/exec';
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeContactForm();
