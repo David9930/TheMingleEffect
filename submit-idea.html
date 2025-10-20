@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Idea - The Mingle Effect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/submit-idea.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">The Mingle Effect <span class="subtitle">(Ode to Michael)</span></h1>
+                <nav class="navigation">
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="the-lyrics.html" class="nav-link">The Lyrics</a></li>
+                        <li><a href="whos-derek.html" class="nav-link">Who's Derek?</a></li>
+                        <li><a href="idea-generator.html" class="nav-link">Idea Generator</a></li>
+                        <li><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="submit-idea-main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="submit-hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Submit Your Idea</h1>
+                    <p class="hero-description">
+                        Help us spread "The Mingle Project's" important message! Share your creative ideas 
+                        for reaching more people and bringing communities together.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Form Section -->
+            <section class="form-section">
+                <div class="form-container">
+                    <div class="form-intro">
+                        <h2>Share Your Vision</h2>
+                        <p>We believe the best ideas come from passionate people who understand the importance of human connection. Your idea could be the spark that helps bring "The Mingle Project" to millions of people worldwide.</p>
+                    </div>
+
+                    <form class="idea-form" id="ideaForm">
+                        <div class="form-group">
+                            <label for="ideaName">Your Name</label>
+                            <input type="text" id="ideaName" name="name" required 
+                                   placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ideaEmail">Email Address</label>
+                            <input type="email" id="ideaEmail" name="email" required 
+                                   placeholder="your.email@example.com">
+                            <small class="field-note">We'll use this to contact you about your idea</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ideaCategory">Idea Category</label>
+                            <select id="ideaCategory" name="category" required>
+                                <option value="">Select a category</option>
+                                <option value="music">Music & Entertainment</option>
+                                <option value="social-media">Social Media Campaign</option>
+                                <option value="community">Community Events</option>
+                                <option value="media">Media & Documentation</option>
+                                <option value="technology">Technology & Apps</option>
+                                <option value="education">Education & Awareness</option>
+                                <option value="corporate">Corporate Partnerships</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ideaTitle">Idea Title</label>
+                            <input type="text" id="ideaTitle" name="title" required 
+                                   placeholder="Give your idea a catchy title">
+                            <small class="field-note">Keep it short and memorable</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ideaDescription">Describe Your Idea</label>
+                            <textarea id="ideaDescription" name="description" required 
+                                      placeholder="Tell us about your idea in detail. How would it help spread The Mingle Project's message? What would success look like?"
+                                      maxlength="2000"></textarea>
+                            <div class="char-counter" id="charCounter">0 / 2000</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ideaImplementation">How Could This Be Implemented?</label>
+                            <textarea id="ideaImplementation" name="implementation" 
+                                      placeholder="Optional: Share your thoughts on how this idea could be put into action. What resources would be needed? Who could help make it happen?"
+                                      maxlength="1000"></textarea>
+                            <div class="char-counter" id="implCharCounter">0 / 1000</div>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="ideaContact" name="contact" value="yes">
+                                <span class="checkmark"></span>
+                                I'm willing to be contacted to discuss this idea further
+                            </label>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="ideaNewsletter" name="newsletter" value="yes">
+                                <span class="checkmark"></span>
+                                Send me updates about The Mingle Project
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit" id="submitButton">
+                                Submit My Idea
+                            </button>
+                            <button type="button" class="btn-clear" id="clearButton">
+                                Clear Form
+                            </button>
+                        </div>
+
+                        <div class="status-message" id="statusMessage"></div>
+                    </form>
+                </div>
+
+                <!-- Inspiration Section -->
+                <div class="inspiration-section">
+                    <h3>Need Inspiration?</h3>
+                    <div class="inspiration-cards">
+                        <div class="inspiration-card">
+                            <h4>💡 Think Big</h4>
+                            <p>How could we reach millions of people? What would a viral campaign look like?</p>
+                        </div>
+                        <div class="inspiration-card">
+                            <h4>🤝 Build Bridges</h4>
+                            <p>How can we bring different communities together? What events could unite people?</p>
+                        </div>
+                        <div class="inspiration-card">
+                            <h4>🎵 Creative Expression</h4>
+                            <p>Music, art, videos, books - how can creativity spread the message?</p>
+                        </div>
+                        <div class="inspiration-card">
+                            <h4>🌐 Digital Innovation</h4>
+                            <p>Apps, websites, social platforms - how can technology help us connect?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 The Mingle Effect. All rights reserved.</p>
+                <p>Visit <a href="https://www.smerconish.com/mingle-project/" target="_blank">smerconish.com/mingle-project</a> for official information about The Mingle Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/submit-idea.js"></script>
+</body>
+</html>
