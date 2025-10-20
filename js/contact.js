@@ -424,3 +424,11 @@ function setupAutoSave() {
 
 // Uncomment to enable auto-save feature
 // setupAutoSave();
+
+// Test function - remove after testing
+function testSuccessMessage() {
+    showStatus('✅ TEST: Your message was successfully sent to Derek! He will get back to you soon.', 'success');
+}
+
+// Call the test after page loads
+setTimeout(testSuccessMessage, 3000);
