@@ -114,11 +114,11 @@ async function handleContactSubmit(event) {
         setFormLoading(true);
         showStatus('Sending your message...', 'loading');
         
-        // Always show success after attempting to send (since we can't reliably detect success with no-cors)
-        setTimeout(async () => {
-            const success = await sendContactToSheets(formData);
-            
-            // Always show success message since the form submission method doesn't give reliable feedback
+        // Send the data (don't wait for response due to CORS)
+        sendContactToSheets(formData);
+        
+        // Show success message after 2 seconds
+        setTimeout(() => {
             showStatus('✅ Your message was successfully sent to Derek! He will get back to you soon.', 'success');
             clearForm();
             setFormLoading(false);
