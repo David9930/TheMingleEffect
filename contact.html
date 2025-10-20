@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - The Mingle Effect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">The Mingle Effect <span class="subtitle">(Ode to Michael)</span></h1>
+                <nav class="navigation">
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="the-lyrics.html" class="nav-link">The Lyrics</a></li>
+                        <li><a href="whos-derek.html" class="nav-link">Who's Derek?</a></li>
+                        <li><a href="idea-generator.html" class="nav-link">Idea Generator</a></li>
+                        <li><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="contact-main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="contact-hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Get In Touch</h1>
+                    <p class="hero-description">
+                        Have questions about The Mingle Project? Want to share feedback about the song? 
+                        We'd love to hear from you!
+                    </p>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact-section">
+                <div class="contact-layout">
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <div class="form-intro">
+                            <h2>Send Us a Message</h2>
+                            <p>Whether you have questions, feedback, or want to get involved with The Mingle Project, we're here to listen.</p>
+                        </div>
+
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactName">Your Name</label>
+                                    <input type="text" id="contactName" name="name" required 
+                                           placeholder="Enter your full name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address</label>
+                                    <input type="email" id="contactEmail" name="email" required 
+                                           placeholder="your.email@example.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactSubject">Subject</label>
+                                <select id="contactSubject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="feedback">Feedback on The Mingle Effect</option>
+                                    <option value="mingle-project">Questions about The Mingle Project</option>
+                                    <option value="collaboration">Collaboration Opportunity</option>
+                                    <option value="media">Media Inquiry</option>
+                                    <option value="technical">Technical Issue</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactMessage">Your Message</label>
+                                <textarea id="contactMessage" name="message" required 
+                                          placeholder="Tell us what's on your mind..."
+                                          maxlength="1500"></textarea>
+                                <div class="char-counter" id="charCounter">0 / 1500</div>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="contactNewsletter" name="newsletter" value="yes">
+                                    <span class="checkmark"></span>
+                                    Keep me updated about The Mingle Project
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit" id="submitButton">
+                                    Send Message
+                                </button>
+                                <button type="button" class="btn-clear" id="clearButton">
+                                    Clear Form
+                                </button>
+                            </div>
+
+                            <div class="status-message" id="statusMessage"></div>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <h3>Connect With Us</h3>
+                        
+                        <div class="info-card">
+                            <h4>🎵 About The Song</h4>
+                            <p>"The Mingle Effect" was created by Derek Devon as a tribute to Michael Smerconish's important message about human connection.</p>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>📺 About The Mingle Project</h4>
+                            <p>Learn more about Michael Smerconish's vision for bringing people together at the official Mingle Project website.</p>
+                            <a href="https://www.smerconish.com/mingle-project/" target="_blank" class="info-link">
+                                Visit Official Site
+                            </a>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>💡 Have an Idea?</h4>
+                            <p>Want to help spread The Mingle Project's message? Check out our Idea Generator for inspiration.</p>
+                            <a href="idea-generator.html" class="info-link">
+                                View Ideas
+                            </a>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>🤝 Response Time</h4>
+                            <p>We typically respond to messages within 24-48 hours. For urgent matters, please mention it in your message.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 The Mingle Effect. All rights reserved.</p>
+                <p>Visit <a href="https://www.smerconish.com/mingle-project/" target="_blank">smerconish.com/mingle-project</a> for official information about The Mingle Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/contact.js"></script>
+</body>
+</html>
