@@ -97,6 +97,7 @@ function isValidEmail(email) {
 
 function handleContactSubmit(event) {
     event.preventDefault();
+    alert('Form submitted - starting process');
     
     // Get form data
     const formData = getContactFormData();
@@ -105,6 +106,8 @@ function handleContactSubmit(event) {
     if (!validateContactForm(formData)) {
         return;
     }
+    
+    alert('Validation passed - sending data');
     
     // Send to Google Sheets
     setFormLoading(true);
@@ -148,8 +151,11 @@ function handleContactSubmit(event) {
     document.body.appendChild(form);
     form.submit();
     
+    alert('Form submitted - setting timeout for success message');
+    
     // Clean up and show success message
     setTimeout(function() {
+        alert('Timeout fired - showing success message');
         if (form.parentNode) {
             document.body.removeChild(form);
         }
