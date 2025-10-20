@@ -113,11 +113,49 @@ function handleContactSubmit(event) {
     setFormLoading(true);
     showStatus('Sending your message...', 'loading');
     
-    // Send the data
-    sendContactToSheets(formData);
+    // Create and submit form directly without async complications
+    const submissionData = {
+        action: 'addContact',
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        newsletter: formData.newsletter,
+        timestamp: formData.timestamp,
+        source: formData.source
+    };
     
-    // Show success message after 2.5 seconds
+    // Create form submission
+    const form = document.createElement('form');
+    form.action = CONTACT_SCRIPT_URL;
+    form.method = 'POST';
+    form.target = 'hiddenFrame';
+    form.style.display = 'none';
+    
+    const dataField = document.createElement('input');
+    dataField.type = 'hidden';
+    dataField.name = 'data';
+    dataField.value = JSON.stringify(submissionData);
+    form.appendChild(dataField);
+    
+    // Create iframe if needed
+    let iframe = document.getElementById('hiddenFrame');
+    if (!iframe) {
+        iframe = document.createElement('iframe');
+        iframe.id = 'hiddenFrame';
+        iframe.name = 'hiddenFrame';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+    }
+    
+    document.body.appendChild(form);
+    form.submit();
+    
+    // Clean up and show success
     setTimeout(function() {
+        if (form.parentNode) {
+            document.body.removeChild(form);
+        }
         showStatus('Your message was successfully sent to Derek! He will get back to you soon.', 'success');
         clearForm();
         setFormLoading(false);
