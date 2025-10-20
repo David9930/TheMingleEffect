@@ -98,7 +98,7 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-async function handleContactSubmit(event) {
+function handleContactSubmit(event) {
     event.preventDefault();
     
     // Get form data
@@ -113,15 +113,15 @@ async function handleContactSubmit(event) {
     setFormLoading(true);
     showStatus('Sending your message...', 'loading');
     
-    // Send the data in the background
+    // Send the data
     sendContactToSheets(formData);
     
-    // Show success message after 2 seconds (don't wait for response)
+    // Show success message after 2.5 seconds
     setTimeout(function() {
-        showStatus('✅ Your message was successfully sent to Derek! He will get back to you soon.', 'success');
+        showStatus('Your message was successfully sent to Derek! He will get back to you soon.', 'success');
         clearForm();
         setFormLoading(false);
-    }, 2000);
+    }, 2500);
 }
 
 function getContactFormData() {
