@@ -1,7 +1,7 @@
 // Submit Idea JavaScript with Google Sheets Integration
 
 // Configuration - Replace with your actual Google Apps Script web app URL
-const IDEA_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwM428b1zI_i0O5NVcIYDCcSXP2i2l-UjAoyx689k0W5LjSSW0JOaCPLZSKAwTg6iv8XA/exec';
+const IDEA_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwq0kM1yM7VzdgVIZ4gVZLcYnxIEEVi3z-wxzOOy5gN33IxGUJecB4y3y3jJ1S8VBFJow/exec';
 
 // Debug flag - set to true to see detailed console logs
 const DEBUG_MODE = true;
