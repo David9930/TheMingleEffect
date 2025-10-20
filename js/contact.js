@@ -3,9 +3,6 @@
 // Configuration - Make sure this matches your actual Google Apps Script URL
 const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwq0kM1yM7VzdgVIZ4gVZLcYnxIEEVi3z-wxzOOy5gN33IxGUJecB4y3y3jJ1S8VBFJow/exec';
 
-// Debug flag - set to true to see detailed console logs
-const DEBUG_MODE = true;
-
 document.addEventListener('DOMContentLoaded', function() {
     initializeContactForm();
 });
@@ -113,7 +110,7 @@ function handleContactSubmit(event) {
     setFormLoading(true);
     showStatus('Sending your message...', 'loading');
     
-    // Create and submit form directly without async complications
+    // Create and submit form directly
     const submissionData = {
         action: 'addContact',
         name: formData.name,
@@ -151,7 +148,7 @@ function handleContactSubmit(event) {
     document.body.appendChild(form);
     form.submit();
     
-    // Clean up and show success
+    // Clean up and show success message
     setTimeout(function() {
         if (form.parentNode) {
             document.body.removeChild(form);
@@ -212,115 +209,6 @@ function validateContactForm(data) {
     }
     
     return isValid;
-}
-
-async function sendContactToSheets(contactData) {
-    try {
-        if (DEBUG_MODE) {
-            console.log('=== SENDING CONTACT TO SHEETS ===');
-            console.log('URL:', CONTACT_SCRIPT_URL);
-            console.log('Data being sent:', contactData);
-        }
-        
-        // Prepare data for Google Sheets - exactly like idea system
-        const submissionData = {
-            action: 'addContact',
-            name: contactData.name,
-            email: contactData.email,
-            subject: contactData.subject,
-            message: contactData.message,
-            newsletter: contactData.newsletter,
-            timestamp: contactData.timestamp,
-            source: contactData.source
-        };
-        
-        if (DEBUG_MODE) {
-            console.log('Formatted submission data:', submissionData);
-        }
-        
-        // Use the exact same form submission method as idea system
-        return await sendViaForm(submissionData);
-        
-    } catch (error) {
-        console.error('Error sending to sheets:', error);
-        if (DEBUG_MODE) {
-            console.log('=== CONTACT SUBMISSION FAILED ===');
-            console.error('Full error details:', error);
-        }
-        return false;
-    }
-}
-
-function sendViaForm(data) {
-    return new Promise((resolve) => {
-        try {
-            if (DEBUG_MODE) {
-                console.log('=== USING FORM SUBMISSION METHOD ===');
-                console.log('Creating hidden form for submission...');
-            }
-            
-            const form = document.createElement('form');
-            form.action = CONTACT_SCRIPT_URL;
-            form.method = 'POST';
-            form.target = 'hiddenFrame';
-            form.style.display = 'none';
-            
-            const dataField = document.createElement('input');
-            dataField.type = 'hidden';
-            dataField.name = 'data';
-            dataField.value = JSON.stringify(data);
-            form.appendChild(dataField);
-            
-            if (DEBUG_MODE) {
-                console.log('Form data field value:', dataField.value);
-            }
-            
-            // Create hidden iframe for submission
-            let iframe = document.getElementById('hiddenFrame');
-            if (!iframe) {
-                iframe = document.createElement('iframe');
-                iframe.id = 'hiddenFrame';
-                iframe.name = 'hiddenFrame';
-                iframe.style.display = 'none';
-                document.body.appendChild(iframe);
-                
-                if (DEBUG_MODE) {
-                    console.log('Created hidden iframe for submission');
-                }
-            }
-            
-            document.body.appendChild(form);
-            
-            if (DEBUG_MODE) {
-                console.log('Submitting contact form to:', form.action);
-                console.log('Form target iframe:', form.target);
-            }
-            
-            form.submit();
-            
-            // Clean up the form after submission
-            setTimeout(() => {
-                if (form.parentNode) {
-                    document.body.removeChild(form);
-                    if (DEBUG_MODE) {
-                        console.log('Contact form cleanup completed');
-                    }
-                }
-                if (DEBUG_MODE) {
-                    console.log('=== CONTACT FORM SUBMISSION COMPLETED ===');
-                }
-                resolve(true);
-            }, 1000);
-            
-        } catch (error) {
-            console.error('Contact form submission error:', error);
-            if (DEBUG_MODE) {
-                console.log('=== CONTACT FORM SUBMISSION FAILED ===');
-                console.error('Full form error details:', error);
-            }
-            resolve(false);
-        }
-    });
 }
 
 function setFormLoading(loading) {
@@ -394,79 +282,3 @@ function setupScrollAnimations() {
         observer.observe(card);
     });
 }
-
-// Auto-save form data to localStorage (optional feature)
-function setupAutoSave() {
-    const form = document.getElementById('contactForm');
-    const saveKey = 'mingle-contact-draft';
-    
-    // Load saved data
-    const savedData = localStorage.getItem(saveKey);
-    if (savedData) {
-        try {
-            const data = JSON.parse(savedData);
-            Object.keys(data).forEach(key => {
-                const field = document.getElementById(key);
-                if (field) {
-                    if (field.type === 'checkbox') {
-                        field.checked = data[key];
-                    } else {
-                        field.value = data[key];
-                    }
-                }
-            });
-            
-            // Update character counter after loading
-            const messageField = document.getElementById('contactMessage');
-            if (messageField) {
-                updateCharCounter(messageField, document.getElementById('charCounter'), 1500);
-            }
-        } catch (e) {
-            console.log('Error loading saved form data');
-        }
-    }
-    
-    // Save data on input
-    const saveFormData = () => {
-        const formData = {};
-        const fields = form.querySelectorAll('input, select, textarea');
-        fields.forEach(field => {
-            if (field.type === 'checkbox') {
-                formData[field.id] = field.checked;
-            } else {
-                formData[field.id] = field.value;
-            }
-        });
-        localStorage.setItem(saveKey, JSON.stringify(formData));
-    };
-    
-    // Debounced save function
-    let saveTimeout;
-    const debouncedSave = () => {
-        clearTimeout(saveTimeout);
-        saveTimeout = setTimeout(saveFormData, 1000);
-    };
-    
-    // Add listeners to all form fields
-    const fields = form.querySelectorAll('input, select, textarea');
-    fields.forEach(field => {
-        field.addEventListener('input', debouncedSave);
-        field.addEventListener('change', debouncedSave);
-    });
-    
-    // Clear saved data when form is successfully submitted
-    window.clearSavedContactData = () => {
-        localStorage.removeItem(saveKey);
-    };
-}
-
-// Uncomment to enable auto-save feature
-// setupAutoSave();
-
-// Test function - remove after testing
-function testSuccessMessage() {
-    showStatus('✅ TEST: Your message was successfully sent to Derek! He will get back to you soon.', 'success');
-}
-
-// Call the test after page loads
-setTimeout(testSuccessMessage, 3000);
