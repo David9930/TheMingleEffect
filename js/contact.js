@@ -122,10 +122,10 @@ function handleContactSubmit(event) {
         // Still submit to Google Sheets in the background
         submitToGoogleSheets(formData);
         
-        // Clear form after showing success
+        // Clear form after success message has been visible for a while (6 seconds total)
         setTimeout(() => {
             clearForm();
-        }, 1000);
+        }, 6000);
     }, 2000);
 }
 
