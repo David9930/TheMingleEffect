@@ -270,6 +270,24 @@
     display: block;
 }
 
+/* Temporary debug CSS - remove after testing */
+.status-message.success {
+    background: red !important;
+    color: white !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    padding: 20px !important;
+    border: 5px solid black !important;
+    display: block !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+    width: 80% !important;
+    max-width: 500px !important;
+}
+
 /* Contact Info Sidebar */
 .contact-info {
     background: white;
@@ -449,24 +467,6 @@
         margin: 0 10px;
         padding: 25px 15px;
     }
-
-    /* Temporary debug CSS - remove after testing */
-.status-message.success {
-    background: red !important;
-    color: white !important;
-    font-size: 24px !important;
-    font-weight: bold !important;
-    padding: 20px !important;
-    border: 5px solid black !important;
-    display: block !important;
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 9999 !important;
-    width: 80% !important;
-    max-width: 500px !important;
-}
     
     .info-card {
         padding: 15px;
