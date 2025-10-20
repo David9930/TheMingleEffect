@@ -1,8 +1,10 @@
 // Submit Idea JavaScript with Google Sheets Integration
 
-// Configuration - You'll need to create a new Google Apps Script for idea submissions
-// For now, using the same URL as your Rebecca site - you may want to create a separate one
+// Configuration - Replace with your actual Google Apps Script web app URL
 const IDEA_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwM428b1zI_i0O5NVcIYDCcSXP2i2l-UjAoyx689k0W5LjSSW0JOaCPLZSKAwTg6iv8XA/exec';
+
+// Debug flag - set to true to see detailed console logs
+const DEBUG_MODE = true;
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeIdeaForm();
@@ -204,10 +206,15 @@ function validateForm(data) {
 
 async function sendIdeaToSheets(ideaData) {
     try {
-        // Prepare data for Google Sheets
+        if (DEBUG_MODE) {
+            console.log('=== SENDING IDEA TO SHEETS ===');
+            console.log('URL:', IDEA_SCRIPT_URL);
+            console.log('Data being sent:', ideaData);
+        }
+        
+        // Prepare data for Google Sheets - exactly like Rebecca system
         const submissionData = {
-            action: 'addIdea', // This will help distinguish from other submissions
-            type: 'idea_submission',
+            action: 'addIdea',
             name: ideaData.name,
             email: ideaData.email,
             category: ideaData.category,
@@ -220,11 +227,19 @@ async function sendIdeaToSheets(ideaData) {
             source: ideaData.source
         };
         
-        // Send using the same method as your Rebecca site
+        if (DEBUG_MODE) {
+            console.log('Formatted submission data:', submissionData);
+        }
+        
+        // Use only the form submission method (exactly like Rebecca system)
         return await sendViaForm(submissionData);
         
     } catch (error) {
         console.error('Error sending to sheets:', error);
+        if (DEBUG_MODE) {
+            console.log('=== SUBMISSION FAILED ===');
+            console.error('Full error details:', error);
+        }
         return false;
     }
 }
@@ -232,10 +247,15 @@ async function sendIdeaToSheets(ideaData) {
 function sendViaForm(data) {
     return new Promise((resolve) => {
         try {
+            if (DEBUG_MODE) {
+                console.log('=== USING FORM SUBMISSION METHOD ===');
+                console.log('Creating hidden form for submission...');
+            }
+            
             const form = document.createElement('form');
             form.action = IDEA_SCRIPT_URL;
             form.method = 'POST';
-            form.target = 'ideaSubmissionFrame';
+            form.target = 'hiddenFrame'; // Changed to match Rebecca system exactly
             form.style.display = 'none';
             
             const dataField = document.createElement('input');
@@ -244,29 +264,53 @@ function sendViaForm(data) {
             dataField.value = JSON.stringify(data);
             form.appendChild(dataField);
             
-            // Create hidden iframe for submission
-            let iframe = document.getElementById('ideaSubmissionFrame');
+            if (DEBUG_MODE) {
+                console.log('Form data field value:', dataField.value);
+            }
+            
+            // Create hidden iframe for submission - using exact same name as Rebecca system
+            let iframe = document.getElementById('hiddenFrame');
             if (!iframe) {
                 iframe = document.createElement('iframe');
-                iframe.id = 'ideaSubmissionFrame';
-                iframe.name = 'ideaSubmissionFrame';
+                iframe.id = 'hiddenFrame';
+                iframe.name = 'hiddenFrame';
                 iframe.style.display = 'none';
                 document.body.appendChild(iframe);
+                
+                if (DEBUG_MODE) {
+                    console.log('Created hidden iframe for submission');
+                }
             }
             
             document.body.appendChild(form);
+            
+            if (DEBUG_MODE) {
+                console.log('Submitting form to:', form.action);
+                console.log('Form target iframe:', form.target);
+            }
+            
             form.submit();
             
-            // Clean up the form after submission
+            // Clean up the form after submission - using same timing as Rebecca system
             setTimeout(() => {
                 if (form.parentNode) {
                     document.body.removeChild(form);
+                    if (DEBUG_MODE) {
+                        console.log('Form cleanup completed');
+                    }
+                }
+                if (DEBUG_MODE) {
+                    console.log('=== FORM SUBMISSION COMPLETED ===');
                 }
                 resolve(true);
-            }, 2000);
+            }, 1000); // Changed back to 1000ms to match Rebecca system
             
         } catch (error) {
             console.error('Form submission error:', error);
+            if (DEBUG_MODE) {
+                console.log('=== FORM SUBMISSION FAILED ===');
+                console.error('Full form error details:', error);
+            }
             resolve(false);
         }
     });
