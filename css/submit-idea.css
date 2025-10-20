@@ -170,6 +170,8 @@
     position: relative;
     transition: all 0.3s ease;
     flex-shrink: 0;
+    background: white;
+    display: inline-block;
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkmark {
