@@ -115,7 +115,7 @@ async function handleContactSubmit(event) {
         const success = await sendContactToSheets(formData);
         
         if (success) {
-            showStatus('✅ Thank you! Your message has been sent successfully. We\'ll get back to you soon!', 'success');
+            showStatus('✅ Your message was successfully sent to Derek! He will get back to you soon.', 'success');
             clearForm();
         } else {
             throw new Error('Failed to send message');
