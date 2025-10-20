@@ -109,26 +109,19 @@ async function handleContactSubmit(event) {
         return;
     }
     
-    try {
-        // Send to Google Sheets
-        setFormLoading(true);
-        showStatus('Sending your message...', 'loading');
-        
-        // Send the data (don't wait for response due to CORS)
-        sendContactToSheets(formData);
-        
-        // Show success message after 2 seconds
-        setTimeout(() => {
-            showStatus('✅ Your message was successfully sent to Derek! He will get back to you soon.', 'success');
-            clearForm();
-            setFormLoading(false);
-        }, 2000);
-        
-    } catch (error) {
-        console.error('Contact submission error:', error);
-        showStatus('Sorry, there was an error sending your message. Please try again or contact us directly.', 'error');
+    // Send to Google Sheets
+    setFormLoading(true);
+    showStatus('Sending your message...', 'loading');
+    
+    // Send the data in the background
+    sendContactToSheets(formData);
+    
+    // Show success message after 2 seconds (don't wait for response)
+    setTimeout(function() {
+        showStatus('✅ Your message was successfully sent to Derek! He will get back to you soon.', 'success');
+        clearForm();
         setFormLoading(false);
-    }
+    }, 2000);
 }
 
 function getContactFormData() {
