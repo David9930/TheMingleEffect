@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Blog Article - The Mingle Effect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/submit-blog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">The Mingle Effect <span class="subtitle">(Ode to Michael)</span></h1>
+                <nav class="navigation">
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="the-lyrics.html" class="nav-link">The Lyrics</a></li>
+                        <li><a href="whos-derek.html" class="nav-link">Who's Derek?</a></li>
+                        <li><a href="idea-generator.html" class="nav-link">Idea Generator</a></li>
+                        <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="submit-blog-main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="submit-hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Submit a Blog Article</h1>
+                    <p class="hero-description">
+                        Share your insights about community building, authentic connections, and creating 
+                        a more connected world. Your voice matters in the conversation.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Form Section -->
+            <section class="form-section">
+                <div class="form-container">
+                    <div class="form-intro">
+                        <h2>Share Your Perspective</h2>
+                        <p>We're looking for thoughtful articles that align with The Mingle Project's mission of fostering authentic human connections. Whether you're sharing personal experiences, research insights, or practical tips, we want to hear your unique voice.</p>
+                    </div>
+
+                    <form class="blog-form" id="blogForm" enctype="multipart/form-data">
+                        <!-- Author Information -->
+                        <fieldset class="form-section-group">
+                            <legend>Author Information</legend>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="authorName">Your Name</label>
+                                    <input type="text" id="authorName" name="authorName" required 
+                                           placeholder="Enter your full name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="authorEmail">Email Address</label>
+                                    <input type="email" id="authorEmail" name="authorEmail" required 
+                                           placeholder="your.email@example.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="authorBio">Author Bio</label>
+                                <textarea id="authorBio" name="authorBio" 
+                                          placeholder="Tell us about yourself in 2-3 sentences. This will appear with your article."
+                                          maxlength="300"></textarea>
+                                <div class="char-counter" id="bioCharCounter">0 / 300</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="authorWebsite">Website/Social Media (Optional)</label>
+                                <input type="url" id="authorWebsite" name="authorWebsite" 
+                                       placeholder="https://yourwebsite.com or social media profile">
+                            </div>
+                        </fieldset>
+
+                        <!-- Article Information -->
+                        <fieldset class="form-section-group">
+                            <legend>Article Details</legend>
+                            
+                            <div class="form-group">
+                                <label for="articleTitle">Article Title</label>
+                                <input type="text" id="articleTitle" name="articleTitle" required 
+                                       placeholder="Give your article a compelling title">
+                                <small class="field-note">Make it descriptive and engaging</small>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="articleCategory">Category</label>
+                                    <select id="articleCategory" name="articleCategory" required>
+                                        <option value="">Select a category</option>
+                                        <option value="community">Community Building</option>
+                                        <option value="technology">Technology & Connection</option>
+                                        <option value="youth">Youth & Education</option>
+                                        <option value="mental-health">Mental Health & Wellness</option>
+                                        <option value="social-change">Social Change</option>
+                                        <option value="personal-story">Personal Story</option>
+                                        <option value="research">Research & Insights</option>
+                                        <option value="practical-tips">Practical Tips</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="readingTime">Estimated Reading Time</label>
+                                    <select id="readingTime" name="readingTime" required>
+                                        <option value="">Select reading time</option>
+                                        <option value="2">2-3 minutes</option>
+                                        <option value="4">4-5 minutes</option>
+                                        <option value="6">6-7 minutes</option>
+                                        <option value="8">8-10 minutes</option>
+                                        <option value="12">10+ minutes</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleSubtitle">Article Subtitle/Summary</label>
+                                <textarea id="articleSubtitle" name="articleSubtitle" required
+                                          placeholder="Provide a brief summary or subtitle that describes what your article is about (1-2 sentences)."
+                                          maxlength="200"></textarea>
+                                <div class="char-counter" id="subtitleCharCounter">0 / 200</div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Article Content -->
+                        <fieldset class="form-section-group">
+                            <legend>Article Content</legend>
+                            
+                            <div class="form-group">
+                                <label for="articleContent">Article Text</label>
+                                <textarea id="articleContent" name="articleContent" required
+                                          placeholder="Write your full article here. Use clear paragraphs and headings. Feel free to include personal anecdotes, research, practical tips, or insights that support The Mingle Project's mission of building authentic human connections."
+                                          maxlength="8000"></textarea>
+                                <div class="char-counter" id="contentCharCounter">0 / 8000</div>
+                                <small class="field-note">Tip: Write in a conversational tone and include specific examples or stories</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="articleTags">Tags</label>
+                                <input type="text" id="articleTags" name="articleTags" 
+                                       placeholder="community building, social connection, digital wellness (separate with commas)">
+                                <small class="field-note">Add 3-5 relevant tags to help readers find your article</small>
+                            </div>
+                        </fieldset>
+
+                        <!-- Images -->
+                        <fieldset class="form-section-group">
+                            <legend>Images (Optional)</legend>
+                            
+                            <div class="form-group">
+                                <label for="featuredImage">Featured Image</label>
+                                <input type="file" id="featuredImage" name="featuredImage" accept="image/jpeg,image/jpg">
+                                <small class="field-note">Upload a main image for your article (JPG only, max 5MB). This will appear at the top of your article.</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="additionalImages">Additional Images</label>
+                                <input type="file" id="additionalImages" name="additionalImages" accept="image/jpeg,image/jpg" multiple>
+                                <small class="field-note">Upload up to 3 additional images to include in your article (JPG only, max 5MB each)</small>
+                            </div>
+
+                            <div class="image-guidelines">
+                                <h4>Image Guidelines:</h4>
+                                <ul>
+                                    <li>Use high-quality, relevant images that support your article</li>
+                                    <li>Ensure you have rights to use any images you submit</li>
+                                    <li>Images should be related to community, connection, or your article topic</li>
+                                    <li>Avoid copyrighted images unless you have permission</li>
+                                </ul>
+                            </div>
+                        </fieldset>
+
+                        <!-- Publishing Preferences -->
+                        <fieldset class="form-section-group">
+                            <legend>Publishing Preferences</legend>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="allowEditing" name="allowEditing" value="yes" checked>
+                                    <span class="checkmark"></span>
+                                    I allow minor editing for clarity, grammar, and style consistency
+                                </label>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="allowContact" name="allowContact" value="yes">
+                                    <span class="checkmark"></span>
+                                    I'm open to being contacted for follow-up questions about my article
+                                </label>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="futureArticles" name="futureArticles" value="yes">
+                                    <span class="checkmark"></span>
+                                    I'm interested in writing more articles for The Mingle Blog
+                                </label>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeTerms" name="agreeTerms" value="yes" required>
+                                    <span class="checkmark"></span>
+                                    I confirm that this is my original work and I agree to the <a href="#" onclick="showTerms()">submission terms</a>
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit" id="submitButton">
+                                Submit Article for Review
+                            </button>
+                            <button type="button" class="btn-clear" id="clearButton">
+                                Clear Form
+                            </button>
+                        </div>
+
+                        <div class="status-message" id="statusMessage"></div>
+                    </form>
+                </div>
+
+                <!-- Guidelines Sidebar -->
+                <aside class="guidelines-sidebar">
+                    <div class="guidelines-widget">
+                        <h3>Writing Guidelines</h3>
+                        <div class="guideline-item">
+                            <h4>🎯 Stay On Topic</h4>
+                            <p>Focus on themes related to community building, authentic connections, digital wellness, or social change.</p>
+                        </div>
+                        <div class="guideline-item">
+                            <h4>📖 Tell Stories</h4>
+                            <p>Personal anecdotes and real examples make articles more engaging and relatable.</p>
+                        </div>
+                        <div class="guideline-item">
+                            <h4>💡 Provide Value</h4>
+                            <p>Share practical tips, insights, or perspectives that readers can apply to their own lives.</p>
+                        </div>
+                        <div class="guideline-item">
+                            <h4>🤝 Be Respectful</h4>
+                            <p>Maintain a positive, inclusive tone that welcomes all perspectives and backgrounds.</p>
+                        </div>
+                    </div>
+
+                    <div class="guidelines-widget">
+                        <h3>Review Process</h3>
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Submission</h4>
+                                <p>Submit your article through this form</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Review</h4>
+                                <p>We'll review your article within 5-7 business days</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Feedback</h4>
+                                <p>We'll contact you with feedback or publication details</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Publication</h4>
+                                <p>Approved articles are published on The Mingle Blog</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guidelines-widget inspiration-widget">
+                        <h3>Need Inspiration?</h3>
+                        <p>Here are some article ideas to get you started:</p>
+                        <ul>
+                            <li>"How I Disconnected from Social Media and Reconnected with My Community"</li>
+                            <li>"5 Simple Ways to Start Conversations with Strangers"</li>
+                            <li>"Building Bridges: My Experience with Cross-Cultural Friendships"</li>
+                            <li>"The Science Behind Why Human Connection Matters"</li>
+                            <li>"From Isolation to Integration: A Parent's Guide to Screen Time Balance"</li>
+                        </ul>
+                    </div>
+                </aside>
+            </section>
+        </div>
+    </main>
+
+    <!-- Terms Modal (Hidden) -->
+    <div id="termsModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Submission Terms</h2>
+            <div class="terms-content">
+                <p>By submitting your article to The Mingle Blog, you agree to the following terms:</p>
+                <ul>
+                    <li>The content is your original work and does not infringe on any copyrights</li>
+                    <li>You grant us permission to publish, edit, and promote your article</li>
+                    <li>You retain ownership of your work</li>
+                    <li>We reserve the right to decline publication for any reason</li>
+                    <li>Published articles may be shared on social media and other platforms</li>
+                    <li>You will be credited as the author of published work</li>
+                </ul>
+                <button onclick="closeTerms()" class="btn-close-terms">I Understand</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 The Mingle Effect. All rights reserved.</p>
+                <p>Visit <a href="https://www.smerconish.com/mingle-project/" target="_blank">smerconish.com/mingle-project</a> for official information about The Mingle Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/submit-blog.js"></script>
+</body>
+</html>
