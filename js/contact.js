@@ -109,10 +109,6 @@ async function handleContactSubmit(event) {
         return;
     }
     
-    // Show loading state
-    setFormLoading(true);
-    showStatus('Sending your message...', 'loading');
-    
     try {
         // Send to Google Sheets
         setFormLoading(true);
@@ -133,6 +129,7 @@ async function handleContactSubmit(event) {
         showStatus('Sorry, there was an error sending your message. Please try again or contact us directly.', 'error');
         setFormLoading(false);
     }
+}
 
 function getContactFormData() {
     return {
