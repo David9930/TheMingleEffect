@@ -106,11 +106,27 @@ function handleContactSubmit(event) {
         return;
     }
     
-    // Send to Google Sheets
+    // Send to Google Sheets with improved handling
     setFormLoading(true);
     showStatus('Sending your message...', 'loading');
     
-    // Create and submit form directly
+    // Try fetch first (more reliable), fall back to form submission
+    submitWithFetch(formData)
+        .then(() => {
+            showStatus('Your message was successfully sent to Derek! He will get back to you soon.', 'success');
+            clearForm();
+        })
+        .catch(() => {
+            // Fallback to iframe method
+            console.log('Fetch failed, trying iframe method...');
+            submitWithIframe(formData);
+        })
+        .finally(() => {
+            setFormLoading(false);
+        });
+}
+
+function submitWithFetch(formData) {
     const submissionData = {
         action: 'addContact',
         name: formData.name,
@@ -121,42 +137,85 @@ function handleContactSubmit(event) {
         timestamp: formData.timestamp,
         source: formData.source
     };
-    
-    // Create form submission
-    const form = document.createElement('form');
-    form.action = CONTACT_SCRIPT_URL;
-    form.method = 'POST';
-    form.target = 'hiddenFrame';
-    form.style.display = 'none';
-    
-    const dataField = document.createElement('input');
-    dataField.type = 'hidden';
-    dataField.name = 'data';
-    dataField.value = JSON.stringify(submissionData);
-    form.appendChild(dataField);
-    
-    // Create iframe if needed
-    let iframe = document.getElementById('hiddenFrame');
-    if (!iframe) {
-        iframe = document.createElement('iframe');
-        iframe.id = 'hiddenFrame';
-        iframe.name = 'hiddenFrame';
-        iframe.style.display = 'none';
-        document.body.appendChild(iframe);
-    }
-    
-    document.body.appendChild(form);
-    form.submit();
-    
-    // Clean up and show success message
-    setTimeout(function() {
-        if (form.parentNode) {
-            document.body.removeChild(form);
+
+    return fetch(CONTACT_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Required for Google Apps Script
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData)
+    })
+    .then(response => {
+        // With no-cors, we can't read the response, so we assume success
+        // if no error was thrown
+        return Promise.resolve();
+    });
+}
+
+function submitWithIframe(formData) {
+    return new Promise((resolve, reject) => {
+        const submissionData = {
+            action: 'addContact',
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            newsletter: formData.newsletter,
+            timestamp: formData.timestamp,
+            source: formData.source
+        };
+        
+        // Create and submit form
+        const form = document.createElement('form');
+        form.action = CONTACT_SCRIPT_URL;
+        form.method = 'POST';
+        form.target = 'hiddenFrame';
+        form.style.display = 'none';
+        
+        const dataField = document.createElement('input');
+        dataField.type = 'hidden';
+        dataField.name = 'data';
+        dataField.value = JSON.stringify(submissionData);
+        form.appendChild(dataField);
+        
+        // Create iframe if needed
+        let iframe = document.getElementById('hiddenFrame');
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.id = 'hiddenFrame';
+            iframe.name = 'hiddenFrame';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
         }
-        showStatus('Your message was successfully sent to Derek! He will get back to you soon.', 'success');
-        clearForm();
-        setFormLoading(false);
-    }, 2500);
+        
+        // Set up iframe load listener
+        const timeoutId = setTimeout(() => {
+            cleanup();
+            reject(new Error('Submission timeout'));
+        }, 10000); // 10 second timeout
+        
+        function cleanup() {
+            clearTimeout(timeoutId);
+            if (form.parentNode) {
+                document.body.removeChild(form);
+            }
+            iframe.onload = null;
+        }
+        
+        iframe.onload = function() {
+            cleanup();
+            // Wait a bit more to ensure processing
+            setTimeout(() => {
+                showStatus('Your message was successfully sent to Derek! He will get back to you soon.', 'success');
+                clearForm();
+                resolve();
+            }, 1000);
+        };
+        
+        document.body.appendChild(form);
+        form.submit();
+    });
 }
 
 function getContactFormData() {
