@@ -1,7 +1,10 @@
 // Contact Page JavaScript with Google Sheets Integration
 
-// Configuration - Using the same Google Apps Script URL as your Rebecca site
+// Configuration - Make sure this matches your actual Google Apps Script URL
 const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwq0kM1yM7VzdgVIZ4gVZLcYnxIEEVi3z-wxzOOy5gN33IxGUJecB4y3y3jJ1S8VBFJow/exec';
+
+// Debug flag - set to true to see detailed console logs
+const DEBUG_MODE = true;
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeContactForm();
@@ -183,10 +186,15 @@ function validateContactForm(data) {
 
 async function sendContactToSheets(contactData) {
     try {
-        // Prepare data for Google Sheets
+        if (DEBUG_MODE) {
+            console.log('=== SENDING CONTACT TO SHEETS ===');
+            console.log('URL:', CONTACT_SCRIPT_URL);
+            console.log('Data being sent:', contactData);
+        }
+        
+        // Prepare data for Google Sheets - exactly like idea system
         const submissionData = {
-            action: 'addContact', // This will help distinguish from other submissions
-            type: 'contact_message',
+            action: 'addContact',
             name: contactData.name,
             email: contactData.email,
             subject: contactData.subject,
@@ -196,11 +204,19 @@ async function sendContactToSheets(contactData) {
             source: contactData.source
         };
         
-        // Send using the same method as your Rebecca site
+        if (DEBUG_MODE) {
+            console.log('Formatted submission data:', submissionData);
+        }
+        
+        // Use the exact same form submission method as idea system
         return await sendViaForm(submissionData);
         
     } catch (error) {
         console.error('Error sending to sheets:', error);
+        if (DEBUG_MODE) {
+            console.log('=== CONTACT SUBMISSION FAILED ===');
+            console.error('Full error details:', error);
+        }
         return false;
     }
 }
@@ -208,10 +224,15 @@ async function sendContactToSheets(contactData) {
 function sendViaForm(data) {
     return new Promise((resolve) => {
         try {
+            if (DEBUG_MODE) {
+                console.log('=== USING FORM SUBMISSION METHOD ===');
+                console.log('Creating hidden form for submission...');
+            }
+            
             const form = document.createElement('form');
             form.action = CONTACT_SCRIPT_URL;
             form.method = 'POST';
-            form.target = 'contactSubmissionFrame';
+            form.target = 'hiddenFrame';
             form.style.display = 'none';
             
             const dataField = document.createElement('input');
@@ -220,29 +241,53 @@ function sendViaForm(data) {
             dataField.value = JSON.stringify(data);
             form.appendChild(dataField);
             
+            if (DEBUG_MODE) {
+                console.log('Form data field value:', dataField.value);
+            }
+            
             // Create hidden iframe for submission
-            let iframe = document.getElementById('contactSubmissionFrame');
+            let iframe = document.getElementById('hiddenFrame');
             if (!iframe) {
                 iframe = document.createElement('iframe');
-                iframe.id = 'contactSubmissionFrame';
-                iframe.name = 'contactSubmissionFrame';
+                iframe.id = 'hiddenFrame';
+                iframe.name = 'hiddenFrame';
                 iframe.style.display = 'none';
                 document.body.appendChild(iframe);
+                
+                if (DEBUG_MODE) {
+                    console.log('Created hidden iframe for submission');
+                }
             }
             
             document.body.appendChild(form);
+            
+            if (DEBUG_MODE) {
+                console.log('Submitting contact form to:', form.action);
+                console.log('Form target iframe:', form.target);
+            }
+            
             form.submit();
             
             // Clean up the form after submission
             setTimeout(() => {
                 if (form.parentNode) {
                     document.body.removeChild(form);
+                    if (DEBUG_MODE) {
+                        console.log('Contact form cleanup completed');
+                    }
+                }
+                if (DEBUG_MODE) {
+                    console.log('=== CONTACT FORM SUBMISSION COMPLETED ===');
                 }
                 resolve(true);
-            }, 2000);
+            }, 1000);
             
         } catch (error) {
-            console.error('Form submission error:', error);
+            console.error('Contact form submission error:', error);
+            if (DEBUG_MODE) {
+                console.log('=== CONTACT FORM SUBMISSION FAILED ===');
+                console.error('Full form error details:', error);
+            }
             resolve(false);
         }
     });
