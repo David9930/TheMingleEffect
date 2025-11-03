@@ -233,14 +233,24 @@ body {
     font-size: 1rem;
 }
 
-/* Video Wrapper - Fixed Size Approach */
+/* Video Wrapper - Responsive Approach */
 .video-wrapper-fixed {
-    /* All styling now handled by inline CSS in HTML */
+    width: 100%;
+    max-width: 500px; /* Desktop max size */
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
+    margin: 0 auto 1.5rem auto;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .smerconish-video-container {
-    /* Simple container that fills the fixed wrapper */
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
 }
