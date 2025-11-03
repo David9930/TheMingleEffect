@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - The Mingle Effect</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/blog.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -19,30 +19,58 @@
                         <li><a href="index.html" class="nav-link">Home</a></li>
                         <li><a href="the-lyrics.html" class="nav-link">The Lyrics</a></li>
                         <li><a href="whos-derek.html" class="nav-link">Who's Derek?</a></li>
-                        <li><a href="idea-generator.html" class="nav-link">Idea Generator</a></li>
+                        <li><a href="mingle-project.html" class="nav-link">The Mingle Project</a></li>
+                        <li><a href="michael-smerconish.html" class="nav-link">Michael Smerconish</a></li>
                         <li><a href="blog.html" class="nav-link active">Blog</a></li>
-                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                        <li><a href="#" class="nav-link" onclick="alert('Coming Soon!')">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="hero-background">
+            <div class="floating-elements">
+                <div class="element">💭</div>
+                <div class="element">📝</div>
+                <div class="element">🤝</div>
+                <div class="element">💡</div>
+                <div class="element">🌟</div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>Insights & Inspiration</span>
+                </div>
+                <h1 class="hero-title">The Mingle Blog</h1>
+                <p class="hero-description">
+                    Thoughts, insights, and stories about building stronger communities 
+                    and fostering genuine human connections in our digital age.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Articles</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Readers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">25+</span>
+                        <span class="stat-label">Contributors</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Content -->
     <main class="blog-main">
         <div class="container">
-            <!-- Hero Section -->
-            <section class="blog-hero">
-                <div class="hero-content">
-                    <h1 class="hero-title">The Mingle Blog</h1>
-                    <p class="hero-description">
-                        Thoughts, insights, and stories about building stronger communities 
-                        and fostering genuine human connections in our digital age.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Blog Content Layout -->
             <section class="blog-content">
                 <div class="blog-layout">
                     <!-- Main Blog Area -->
@@ -51,11 +79,15 @@
                         <article class="blog-post featured">
                             <div class="post-image">
                                 <img src="images/blog-pic-1.jpg" alt="AI and Youth Future" class="post-img">
-                                <div class="post-category">Featured</div>
+                                <div class="post-category featured-cat">Featured</div>
+                                <div class="post-overlay"></div>
                             </div>
                             <div class="post-content">
                                 <div class="post-meta">
-                                    <span class="post-author">Derek Devon</span>
+                                    <span class="post-author">
+                                        <img src="images/derek-avatar.jpg" alt="Derek Devon" class="author-avatar">
+                                        Derek Devon
+                                    </span>
                                     <span class="post-date">May 11, 2024</span>
                                     <span class="post-reading-time">3 min read</span>
                                 </div>
@@ -67,7 +99,22 @@
                                     But what about the impact of AI on our most precious resource - our children? As a parent or someone 
                                     who cares about the younger generation, it's natural to wonder how AI will influence the job market...
                                 </p>
-                                <a href="blog-article-ai-youth.html" class="read-more">Read Full Article →</a>
+                                <div class="post-footer">
+                                    <a href="blog-article-ai-youth.html" class="read-more">
+                                        Read Full Article 
+                                        <span class="arrow">→</span>
+                                    </a>
+                                    <div class="post-actions">
+                                        <button class="action-btn like-btn">
+                                            <span class="icon">❤️</span>
+                                            <span class="count">24</span>
+                                        </button>
+                                        <button class="action-btn comment-btn">
+                                            <span class="icon">💬</span>
+                                            <span class="count">8</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </article>
 
@@ -75,11 +122,15 @@
                         <article class="blog-post">
                             <div class="post-image">
                                 <img src="images/blog-pic-2.jpg" alt="Building Community Connections" class="post-img">
-                                <div class="post-category">Community</div>
+                                <div class="post-category community-cat">Community</div>
+                                <div class="post-overlay"></div>
                             </div>
                             <div class="post-content">
                                 <div class="post-meta">
-                                    <span class="post-author">Derek Devon</span>
+                                    <span class="post-author">
+                                        <img src="images/derek-avatar.jpg" alt="Derek Devon" class="author-avatar">
+                                        Derek Devon
+                                    </span>
                                     <span class="post-date">May 5, 2024</span>
                                     <span class="post-reading-time">4 min read</span>
                                 </div>
@@ -90,18 +141,37 @@
                                     In our hyper-connected yet increasingly isolated world, the challenge isn't finding people to connect with—it's 
                                     finding ways to connect authentically. The Mingle Project offers a roadmap for rebuilding the social fabric...
                                 </p>
-                                <a href="blog-article-community.html" class="read-more">Read Full Article →</a>
+                                <div class="post-footer">
+                                    <a href="blog-article-community.html" class="read-more">
+                                        Read Full Article 
+                                        <span class="arrow">→</span>
+                                    </a>
+                                    <div class="post-actions">
+                                        <button class="action-btn like-btn">
+                                            <span class="icon">❤️</span>
+                                            <span class="count">18</span>
+                                        </button>
+                                        <button class="action-btn comment-btn">
+                                            <span class="icon">💬</span>
+                                            <span class="count">12</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </article>
 
                         <article class="blog-post">
                             <div class="post-image">
                                 <img src="images/blog-pic-3.jpg" alt="Music and Social Change" class="post-img">
-                                <div class="post-category">Music</div>
+                                <div class="post-category music-cat">Music</div>
+                                <div class="post-overlay"></div>
                             </div>
                             <div class="post-content">
                                 <div class="post-meta">
-                                    <span class="post-author">Derek Devon</span>
+                                    <span class="post-author">
+                                        <img src="images/derek-avatar.jpg" alt="Derek Devon" class="author-avatar">
+                                        Derek Devon
+                                    </span>
                                     <span class="post-date">April 28, 2024</span>
                                     <span class="post-reading-time">5 min read</span>
                                 </div>
@@ -112,20 +182,39 @@
                                     Music has always been a powerful catalyst for social movements. From protest songs of the 60s to benefit concerts 
                                     that raised millions, melodies and lyrics have the unique ability to unite people across all divides...
                                 </p>
-                                <a href="blog-article-music.html" class="read-more">Read Full Article →</a>
+                                <div class="post-footer">
+                                    <a href="blog-article-music.html" class="read-more">
+                                        Read Full Article 
+                                        <span class="arrow">→</span>
+                                    </a>
+                                    <div class="post-actions">
+                                        <button class="action-btn like-btn">
+                                            <span class="icon">❤️</span>
+                                            <span class="count">32</span>
+                                        </button>
+                                        <button class="action-btn comment-btn">
+                                            <span class="icon">💬</span>
+                                            <span class="count">15</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </article>
 
                         <!-- Load More Button -->
                         <div class="load-more-section">
-                            <button class="btn-load-more" id="loadMoreBtn">Load More Articles</button>
+                            <button class="btn-load-more" id="loadMoreBtn">
+                                <span>Load More Articles</span>
+                                <div class="loading-spinner"></div>
+                            </button>
                         </div>
                     </div>
 
                     <!-- Sidebar -->
                     <aside class="blog-sidebar">
                         <!-- Submit Article CTA -->
-                        <div class="sidebar-widget">
+                        <div class="sidebar-widget cta-widget">
+                            <div class="widget-icon">✍️</div>
                             <h3>Share Your Story</h3>
                             <p>Have insights about building community connections? We'd love to hear from you!</p>
                             <a href="submit-blog-article.html" class="btn-submit-article">Submit an Article</a>
@@ -135,7 +224,7 @@
                         <div class="sidebar-widget">
                             <h3>Categories</h3>
                             <ul class="category-list">
-                                <li><a href="#" data-category="all">All Articles <span class="count">(3)</span></a></li>
+                                <li><a href="#" data-category="all" class="active">All Articles <span class="count">(3)</span></a></li>
                                 <li><a href="#" data-category="community">Community <span class="count">(1)</span></a></li>
                                 <li><a href="#" data-category="technology">Technology <span class="count">(1)</span></a></li>
                                 <li><a href="#" data-category="music">Music <span class="count">(1)</span></a></li>
@@ -145,6 +234,7 @@
 
                         <!-- Featured Quote -->
                         <div class="sidebar-widget quote-widget">
+                            <div class="quote-icon">💭</div>
                             <h3>Featured Quote</h3>
                             <blockquote>
                                 "When we mingle, we tell each other our life stories. We practice empathy, we build connections, and we strengthen our social fitness."
@@ -157,14 +247,20 @@
                             <h3>Recent Discussions</h3>
                             <div class="recent-comments">
                                 <div class="comment-item">
-                                    <div class="comment-author">Sarah M.</div>
-                                    <div class="comment-text">"This article really opened my eyes to how AI might impact..."</div>
-                                    <div class="comment-post">on <a href="blog-article-ai-youth.html">AI & Youth's Future</a></div>
+                                    <div class="comment-avatar">S</div>
+                                    <div class="comment-details">
+                                        <div class="comment-author">Sarah M.</div>
+                                        <div class="comment-text">"This article really opened my eyes to how AI might impact..."</div>
+                                        <div class="comment-post">on <a href="blog-article-ai-youth.html">AI & Youth's Future</a></div>
+                                    </div>
                                 </div>
                                 <div class="comment-item">
-                                    <div class="comment-author">Mike D.</div>
-                                    <div class="comment-text">"Love the practical tips for building community connections..."</div>
-                                    <div class="comment-post">on <a href="blog-article-community.html">Building Connections</a></div>
+                                    <div class="comment-avatar">M</div>
+                                    <div class="comment-details">
+                                        <div class="comment-author">Mike D.</div>
+                                        <div class="comment-text">"Love the practical tips for building community connections..."</div>
+                                        <div class="comment-post">on <a href="blog-article-community.html">Building Connections</a></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -186,6 +282,7 @@
 
                         <!-- Newsletter Signup -->
                         <div class="sidebar-widget newsletter-widget">
+                            <div class="newsletter-icon">📬</div>
                             <h3>Stay Connected</h3>
                             <p>Get notified when we publish new articles about building stronger communities.</p>
                             <form class="newsletter-form">
@@ -203,8 +300,34 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2024 The Mingle Effect. All rights reserved.</p>
-                <p>Visit <a href="https://www.smerconish.com/mingle-project/" target="_blank">smerconish.com/mingle-project</a> for official information about The Mingle Project.</p>
+                <div class="footer-section">
+                    <h4>The Mingle Effect</h4>
+                    <p>A tribute song supporting Michael Smerconish's vital mission to reconnect America.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="the-lyrics.html">Song Lyrics</a></li>
+                        <li><a href="whos-derek.html">About Derek</a></li>
+                        <li><a href="mingle-project.html">The Mingle Project</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.smerconish.com/mingle-project/" target="_blank">Official Mingle Project</a></li>
+                        <li><a href="https://www.cnn.com/profiles/michael-smerconish-profile" target="_blank">CNN Smerconish</a></li>
+                        <li><a href="https://www.siriusxm.com/hosts/michael-smerconish" target="_blank">SiriusXM Show</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 The Mingle Effect. Created by Derek Devon in support of Michael Smerconish's Mingle Project.</p>
+                <p><em>This site is an independent tribute and is not officially affiliated with Michael Smerconish or his organizations.</em></p>
             </div>
         </div>
     </footer>
