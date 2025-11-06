@@ -1,0 +1,141 @@
+/* Mobile Navigation CSS - Add this to your existing CSS files */
+
+/* Mobile hamburger menu styles */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.mobile-nav-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure header content is flex */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* Default navigation styles */
+.nav-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.8rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Styles - Phones */
+@media (max-width: 768px) {
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        margin: 0;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 1rem;
+        text-align: center;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        white-space: normal;
+    }
+
+    .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-menu li:last-child .nav-link {
+        border-bottom: none;
+    }
+
+    .site-title {
+        font-size: 1.2rem;
+    }
+
+    .site-title .subtitle {
+        font-size: 0.7rem;
+    }
+}
+
+/* Tablet optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .nav-menu {
+        gap: 0.5rem;
+    }
+    
+    .site-title {
+        font-size: 1.4rem;
+    }
+}
+
+/* Large tablets/small laptops */
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.7rem;
+    }
+}
+
+/* Animation for mobile menu */
+@media (max-width: 768px) {
+    .nav-menu {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
