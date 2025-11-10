@@ -28,6 +28,8 @@
         .book-cover-placeholder {
             text-align: center;
             margin-bottom: 1rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
         }
         
         .book-cover-placeholder a {
@@ -35,11 +37,51 @@
             text-decoration: none;
         }
         
+        /* Expand the book preview container */
+        .book-preview {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            min-height: 300px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .book-details {
+            flex: 1;
+            min-height: 270px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* Expand the timeline card for the book section */
+        .timeline-item[data-year="10 Months Later"] .timeline-card {
+            min-height: 350px !important;
+            padding: 2rem !important;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .book-img-large {
                 width: 150px !important;
                 height: 225px !important;
+            }
+            
+            .book-preview {
+                flex-direction: column;
+                text-align: center;
+                min-height: auto;
+            }
+            
+            .book-cover-placeholder {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .timeline-item[data-year="10 Months Later"] .timeline-card {
+                min-height: auto !important;
+                padding: 1.5rem !important;
             }
         }
     </style>
