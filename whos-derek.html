@@ -6,7 +6,43 @@
     <title>Who's Derek? - The Mingle Effect</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/derek.css">
+    <link rel="stylesheet" href="mobile-navigation.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced book cover styles */
+        .book-img-large {
+            width: 180px !important;
+            height: 270px !important;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .book-img-large:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .book-cover-placeholder {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .book-cover-placeholder a {
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .book-img-large {
+                width: 150px !important;
+                height: 225px !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -14,13 +50,18 @@
         <div class="container">
             <div class="header-content">
                 <h1 class="site-title">The Mingle Effect <span class="subtitle">(Ode to Michael)</span></h1>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-nav-toggle" onclick="toggleMobileMenu()">☰</button>
+
+                <!-- Navigation Menu -->
                 <nav class="navigation">
-                    <ul class="nav-menu">
+                    <ul class="nav-menu" id="navMenu">
                         <li><a href="index.html" class="nav-link">Home</a></li>
-                        <li><a href="the-lyrics.html" class="nav-link">The Lyrics</a></li>
-                        <li><a href="whos-derek.html" class="nav-link">Who's Derek?</a></li>
-                        <li><a href="mingle-project.html" class="nav-link">The Mingle Project</a></li>
-                        <li><a href="michael-smerconish.html" class="nav-link">Michael Smerconish</a></li>
+                        <li><a href="the-lyrics.html" class="nav-link">Lyrics</a></li>
+                        <li><a href="whos-derek.html" class="nav-link">About Derek</a></li>
+                        <li><a href="mingle-project.html" class="nav-link">Mingle Project</a></li>
+                        <li><a href="michael-smerconish.html" class="nav-link">M. Smerconish</a></li>
                         <li><a href="blog.html" class="nav-link">Blog</a></li>
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
@@ -73,7 +114,9 @@
                             <p>After 10 months of 12-hour days, Derek completed a 506-page novel. A one-man show doing everything from writing to cover art and layout.</p>
                             <div class="book-preview">
                                 <div class="book-cover-placeholder">
-                                    <img src="images/book-cover.jpg" alt="A Letter Guide For Rebecca" class="book-img">
+                                    <a href="https://www.aletterguideforrebecca.com" target="_blank" rel="noopener noreferrer" title="Visit A Letter Guide For Rebecca website">
+                                        <img src="images/book-cover.jpg" alt="A Letter Guide For Rebecca - Click to visit website" class="book-img-large">
+                                    </a>
                                 </div>
                                 <div class="book-details">
                                     <strong>What if you could transfer all your memories into your 12-year-old self?</strong>
@@ -209,5 +252,6 @@
 
     <script src="js/main.js"></script>
     <script src="js/derek.js"></script>
+    <script src="mobile-navigation.js"></script>
 </body>
 </html>
